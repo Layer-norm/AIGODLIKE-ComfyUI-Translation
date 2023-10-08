@@ -17,7 +17,7 @@ export class TUtils {
 
 	static setLocale(locale) {
 		localStorage[TUtils.LOCALE_ID_LAST] = localStorage.getItem(TUtils.LOCALE_ID) || "en-US";//默认值与LOCALE_ID不同，确保转换功能正常
-		localStorage[TUtils.LOCALE_ID] = locale || "zh_CN";//相当于把defaultValue写在这里，后续操作不再额外判断
+		localStorage[TUtils.LOCALE_ID] = locale || "zh-CN";//相当于把defaultValue写在这里，后续操作不再额外判断
 		// TUtils.syncTranslation(); 					 //所有setLocale的部分都会刷新页面，刷新页面就会执行init(app)中的TUtils.syncTranslation()，不需要额外调用
 	}
 
