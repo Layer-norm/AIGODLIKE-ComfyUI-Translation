@@ -1304,6 +1304,7 @@
     "Power Up": "幂函数上升",
     "Half Cosine Up": "半余弦上升",
     "Cosine Up": "余弦上升",
+    "Cosine Down": "余弦下降",
     "Linear Up": "线性上升",
     "Half Cosine Down": "半余弦下降",
     "Consine Down": "余弦下降",
@@ -1358,5 +1359,11 @@
     "ease-in-out": "渐进渐出",
     "ease-in": "渐进",
     "ease-out": "渐出",
-    "linear": "线性"
+    "linear": "线性",
+
+    "inpir": "inpir",
+
+    "increment for each node": "每个节点增加",
+    "decrement for each node": "每个节点减少",
+    "randomize for each node": "每个节点随机"
 }
