@@ -3,6 +3,8 @@ A plugin for multilingual translation of [ComfyUI](https://github.com/comfyanony
 ## ComfyUI users in other languages, I need your help
 I hope ComfyUI can support more languages besides Chinese and English, such as French, German, Japanese, Korean, etc. However, I believe that translation should be done by native speakers of each language. So I need your help, let's go fight for ComfyUI together!
 
+**[9.12] Japanese internal nodes and menu translation completed, current now working on custom nodes, due to unpredictable future nodes, this part can not commit a complete time**
+
 **[9.5] Japanese translation will start production ~ expected to take 1-3 weeks**
 
 **[TC] Traditional Chinese translation needs help~**
@@ -34,7 +36,8 @@ https://github.com/AIGODLIKE/AIGODLIKE-COMFYUI-TRANSLATION/assets/116185401/e431
 |[Advanced ControlNet](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet)|√|√|TODO|TODO|
 |[AGL-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-COMFYUI-TRANSLATION)|√|√|√|TODO|
 |[AlekPet Nodes](https://github.com/AlekPet/ComfyUI_Custom_Nodes_AlekPet)|√|√|√|TODO|
-|[AnimateDiff](https://github.com/guoyww/AnimateDiff)|√|√|√|TODO|
+|[AnimateDiff](https://github.com/ArtVentureX/comfyui-animatediff)|√|√|√|TODO|
+|[AnimateDiff-Evolved](https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git)|√|√|TODO|TODO|
 |[CLIP Seg](https://github.com/biegert/ComfyUI-CLIPSeg)|√|√|√|TODO|
 |[ComfyRoll](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes)|√|√|TODO|TODO|
 |[ControlNet LLLite](https://github.com/kohya-ss/ControlNet-LLLite-ComfyUI)|√|√|TODO|TODO|
@@ -51,6 +54,7 @@ https://github.com/AIGODLIKE/AIGODLIKE-COMFYUI-TRANSLATION/assets/116185401/e431
 |[experiments](https://github.com/comfyanonymous/ComfyUI_experiments)|√|√|TODO|TODO|
 |[Fast Decode](https://github.com/nagolinc/ComfyUI_FastVAEDecorder_SDXL)|√|√|√|TODO|
 |[IPAdapter](https://github.com/laksjdjf/IPAdapter-ComfyUI)|√|√|TODO|TODO|
+|[IPAdapter_plus](https://github.com/cubiq/ComfyUI_IPAdapter_plus)|√|√|TODO|TODO|
 |[Image Grid](https://github.com/LEv145/images-grid-comfy-plugin)|√|√|TODO|TODO|
 |[Impact Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)|√|√|TODO|TODO|
 |[Impact Subpack](https://github.com/ltdrdata/ComfyUI-Impact-Subpack)|√|√|TODO|TODO|

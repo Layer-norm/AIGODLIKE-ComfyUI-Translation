@@ -120,6 +120,18 @@ export class TUtils {
 			});
 			return res;
 		};
+		let onInputAdded = node.onInputAdded;
+		node.onInputAdded = function (slot) {
+			if (onInputAdded)
+				res = onInputAdded.apply(this, arguments);
+			console.log(slot);
+			let t = TUtils.T.Nodes[this.comfyClass];
+			if (t["widgets"] && slot.name in t["widgets"]) {
+				slot.label = t["widgets"][slot.name];
+			}
+			if (onInputAdded)
+				return res;
+		};
 	}
 
 	static applyMenuTranslation(app) {
@@ -287,7 +299,7 @@ export class TUtils {
 			async onChange(value) {
 				if (!value)
 					return;
-				if (value != localStorage[id]) {
+				if ( value != localStorage[id]) {
 					TUtils.setLocale(value);
 					location.reload();
 				}
