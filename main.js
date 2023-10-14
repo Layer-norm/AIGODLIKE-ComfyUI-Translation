@@ -321,7 +321,7 @@ const ext = {
 		}
 		// alert("当前语言是："+presentLocale);
 		TUtils.syncTranslation();
-		TUtils.asyncTranslation();//防止节点树加载过慢未能及时翻译
+		// TUtils.asyncTranslation();//防止节点树加载过慢未能及时翻译
 		return;
 
 		var f = app.graphToPrompt;
