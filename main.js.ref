@@ -22,10 +22,8 @@ export class TUtils {
 	}
 
 	static syncTranslation(OnFinished = () => { }) {
-
 		var locale = localStorage.getItem(TUtils.LOCALE_ID);//删掉了zh-CN, 因为之前setLocale已经设置好了
-		var url = "./agl/get_translation";
-
+		var url = "/agl/get_translation";
 		var request = new XMLHttpRequest();
 		request.open("post", url);
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -121,18 +119,6 @@ export class TUtils {
 				}
 			});
 			return res;
-		};
-		let onInputAdded = node.onInputAdded;
-		node.onInputAdded = function (slot) {
-			if (onInputAdded)
-				var res = onInputAdded.apply(this, arguments);
-			console.log(slot);
-			let t = TUtils.T.Nodes[this.comfyClass];
-			if (t["widgets"] && slot.name in t["widgets"]) {
-				slot.label = t["widgets"][slot.name];
-			}
-			if (onInputAdded)
-				return res;
 		};
 	}
 
@@ -323,7 +309,7 @@ const ext = {
 		}
 		// alert("当前语言是："+presentLocale);
 		TUtils.syncTranslation();
-		// TUtils.asyncTranslation();//防止节点树加载过慢未能及时翻译
+		TUtils.asyncTranslation();//防止节点树加载过慢未能及时翻译
 		return;
 
 		var f = app.graphToPrompt;
