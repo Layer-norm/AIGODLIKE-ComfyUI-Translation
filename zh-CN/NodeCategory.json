@@ -1,6 +1,7 @@
 {
     "sampling": "采样",
     "loaders": "加载器",
+        "video_models": "视频模型",
     "conditioning": "条件",
         "style_model": "风格模型",
         "gligen": "GLIGEN",
@@ -19,6 +20,9 @@
     "mask": "遮罩",
     "_for_testing": "测试",
         "custom_sampling": "自定义采样",
+            "schedulers": "调度器",
+            "samplers": "采样器",
+            "Sigmas": "Sigmas",
     "advanced1": "高级",
         "loaders1": "加载器",
             "deprecated": "已弃用",
@@ -194,7 +198,7 @@
     "everywhere": "全局输入",
     "Video Helper Suite 🎥🅥🅗🅢": "视频助手 🎥🅥🅗🅢",
     "FABRIC": "Fabric节点",
-        
+    "ReActor": "ReActor换脸节点",
 
 
 
@@ -277,4 +281,4 @@
     "SAM_PARAMETERS": "SAM参数",
     "IMAGE_BOUNDS": "边界"
 
-}  
+}
