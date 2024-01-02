@@ -16,8 +16,8 @@
         "title": "K采样器",
         "inputs": {
             "model": "模型",
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "latent_image": "Latent"
         },
         "widgets": {
@@ -41,8 +41,8 @@
         "title": "K采样器(高级)",
         "inputs": {
             "model": "模型",
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "latent_image": "Latent"
         },
         "widgets": {
@@ -70,8 +70,8 @@
         "title": "自定义采样器",
         "inputs": {
             "model": "模型",
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "sampler": "采样器",
             "sigmas": "Sigmas",
             "latent_image": "Latent"
@@ -174,7 +174,8 @@
         },
         "widgets": {
             "scheduler": "调度器",
-            "steps": "步数"
+            "steps": "步数",
+            "denoise": "降噪"
         },
         "outputs": {
             "SIGMAS": "Sigmas"
@@ -423,8 +424,28 @@
             "augmentation_level": "增强"
         },
         "outputs": {
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "latent": "Latent"
+        }
+    },
+    "StableZero123_Conditioning": {
+        "title": "SZ123_条件",
+        "inputs": {
+            "clip_vision": "CLIP视觉",
+            "init_image": "图像",
+            "VAE": "VAE"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "batch_size": "批次大小",
+            "elevation": "俯仰角",
+            "azimuth": "方位角"
+        },
+        "outputs": {
+            "positive": "正面条件",
+            "negative": "负面条件",
             "latent": "Latent"
         }
     },
@@ -590,8 +611,8 @@
     "ControlNetApplyAdvanced": {
         "title": "ControlNet应用(高级)",
         "inputs": {
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "control_net": "ControlNet",
             "image": "图像"
         },
@@ -601,8 +622,8 @@
             "end_percent": "结束时间"
         },
         "outputs": {
-            "positive": "正面提示词",
-            "negative": "负面提示词"
+            "positive": "正面条件",
+            "negative": "负面条件"
         }
     },
 
@@ -661,7 +682,7 @@
         }
     },
     "RebatchLatents": {
-        "title": "重设批次",
+        "title": "重设Latent批次",
         "inputs": {
             "latents": "Latent"
         },
@@ -1046,6 +1067,44 @@
             "IMAGE": "图像"
         }
     },
+    "RebatchImages": {
+        "title": "重设图像批次",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "SaveAnimatedWEBP": {
+        "title": "保存WEBP",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "fps": "帧率",
+            "lossless": "无损",
+            "quality": "质量",
+            "method": "方法",
+                "fastest": "最快",
+                "slowest": "最慢"
+        }
+    },
+    "SaveAnimatedPNG": {
+        "title": "保存APNG",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "fps": "帧率",
+            "compress_level": "压缩等级"
+        }
+    },
 
 
     "SaveImage": {
@@ -1136,6 +1195,16 @@
         },
         "outputs": {
             "IMAGE": "图像"
+        }
+    },
+    "SaveImageWithAlpha": {
+        "title": "保存图像(Alpha)",
+        "inputs": {
+            "images": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀"
         }
     },
 
@@ -1426,7 +1495,7 @@
         }
     },
     "PatchModelAddDownscale": {
-        "title": "收缩模型Unet",
+        "title": "收缩模型UNET",
         "inputs": {
             "model": "模型"
         },
@@ -1441,30 +1510,30 @@
             "MODEL": "模型"
         }
     },
-    "SaveAnimatedWEBP": {
-        "title": "保存WEBP",
+    "SelfAttentionGuidance": {
+        "title": "自注意力引导",
         "inputs": {
-            "images": "图像"
+            "model": "模型"
         },
         "widgets": {
-            "filename_prefix": "文件名前缀",
-            "fps": "帧率",
-            "lossless": "无损",
-            "quality": "质量",
-            "method": "方法",
-                "fastest": "最快",
-                "slowest": "最慢"
+            "scale": "缩放",
+            "blur_sigma": "模糊"
+        },
+        "outputs": {
+            "MODEL": "模型"
         }
     },
-    "SaveAnimatedPNG": {
-        "title": "保存APNG",
+    "PerpNeg": {
+        "title": "重塑负提示",
         "inputs": {
-            "images": "图像"
+            "model": "模型",
+            "empty_conditioning": "空条件"
         },
         "widgets": {
-            "filename_prefix": "文件名前缀",
-            "fps": "帧率",
-            "compress_level": "压缩等级"
+            "neg_scale": "负面缩放"
+        },
+        "outputs": {
+            "MODEL": "模型"
         }
     },
 

@@ -223,8 +223,8 @@
         "title": "K采样器(Inspire)",
         "inputs": {
             "model": "模型",
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "latent_image": "Latent"
         },
         "widgets": {
@@ -249,8 +249,8 @@
         "title": "K采样器(高级Inspire)",
         "inputs": {
             "model": "模型",
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "latent_image": "Latent"
         },
         "widgets": {
@@ -296,22 +296,32 @@
             "ZIPPED_PROMPT": "提示词包"
         }
     },
+    "LoadSinglePromptsFromFile //Inspire": {
+        "title": "加载单独提示词(文件)",
+        "wdigets": {
+            "prompt": "提示词",
+            "index": "序号"
+        },
+        "outputs": {
+            "ZIPPED_PROMPT": "提示词包"
+        }
+    },
     "UnzipPrompt //Inspire": {
         "title": "解包提示词",
         "inputs": {
             "zipped_prompt": "提示词包"
         },
         "outputs": {
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "name": "名称"
         }
     },
     "ZipPrompt //Inspire": {
         "title": "打包提示词",
         "widgets": {
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "name": "名称"
         },
         "outputs": {
@@ -322,13 +332,13 @@
         "title": "提取提示词",
         "widgets": {
             "image": "图像",
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "info": "信息"
         },
         "outputs": {
-            "positive": "正面提示词",
-            "negative": "负面提示词"
+            "positive": "正面条件",
+            "negative": "负面条件"
         }
     },
     "PromptBuilder //Inspire": {
@@ -407,6 +417,20 @@
             "INT": "整数"
         }
     },
+    "CLIPTextEncodeWithWeight //Inspire": {
+        "title": "CLIP文本编码(权重)",
+        "inputs": {
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "text": "文本",
+            "strength": "强度",
+            "add_weight": "附加权重"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
+        }
+    },
     "FromIPAdapterPipe //Inspire": {
         "title": "从IP适配",
         "inputs": {
@@ -436,8 +460,8 @@
         "title": "K采样器(过程)",
         "inputs": {
             "model": "模型",
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "latent_image": "Latent"
         },
         "widgets": {
@@ -465,8 +489,8 @@
         "title": "K采样器(高级过程)",
         "inputs": {
             "model": "模型",
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "latent_image": "Latent",
             "prev_progress_latent_opt": "前过程Latent"
         },
@@ -651,16 +675,17 @@
         "title": "绑定图像提示词列表",
         "inputs": {
             "images": "图像",
-            "zipped_prompt": "提示词包"
+            "zipped_prompt": "提示词包",
+            "zipped_prompts": "提示词包"
         },
         "widgets": {
-            "default_positive": "默认正面提示词",
-            "default_negative": "默认负面提示词"
+            "default_positive": "默认正面条件",
+            "default_negative": "默认负面条件"
         },
         "outputs": {
             "image": "图像",
-            "positive": "正面提示词",
-            "negative": "负面提示词",
+            "positive": "正面条件",
+            "negative": "负面条件",
             "prompt_label": "提示词标签"
         }
     },
@@ -879,9 +904,20 @@
             "MODEL": "模型"
         }
     },
+    "CheckpointLoaderSimpleShared //Inspire": {
+        "title": "Checkpoint加载器(简易共享)",
+        "widgets": {
+            "ckpt_name": "模型名称",
+            "key_opt": "Key"
+        },
+        "outputs": {
+            "model": "模型",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "cache key": "缓存Key"
+        }
+    },
 
-
-    
 
     "FloatRange //Inspire": {
         "title": "浮点范围",
@@ -894,6 +930,28 @@
         },
         "outputs": {
             "FLOAT": "浮点"
+        }
+    },
+
+
+    "ConcatConditioningsWithMultiplier //Inspire": {
+        "title": "条件联结(系数)",
+        "inputs": {
+            "conditioning1": "条件1",
+            "conditioning2": "条件2",
+            "conditioning3": "条件3",
+            "conditioning4": "条件4",
+            "conditioning5": "条件5"
+        },
+        "widgets": {
+            "multiplier1": "系数1",
+            "multiplier2": "系数2",
+            "multiplier3": "系数3",
+            "multiplier4": "系数4",
+            "multiplier5": "系数5"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
         }
     }
 }

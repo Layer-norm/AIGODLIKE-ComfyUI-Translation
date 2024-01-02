@@ -183,6 +183,53 @@
         "outputs": {
         }
     },
+    "CR Random LoRA Stack": {
+        "title": "随机LoRA堆",
+        "inputs": {
+            "lora_stack": "LoRA堆"
+        },
+        "widgets": {
+            "exclusive_mode": "非重复模式",
+            "stride": "步幅",
+            "force_randomize_after_stride": "强制每次随机",
+            "lora_name_1": "LoRA名称1",
+            "switch_1": "开关1",
+            "chance_1": "概率1",
+            "model_weight_1": "模型强度1",
+            "clip_weight_1": "CLIP强度1",
+            "lora_name_2": "LoRA名称2",
+            "switch_2": "开关2",
+            "chance_2": "概率2",
+            "model_weight_2": "模型强度2",
+            "clip_weight_2": "CLIP强度2",
+            "lora_name_3": "LoRA名称3",
+            "switch_3": "开关3",
+            "chance_3": "概率3",
+            "model_weight_3": "模型强度3",
+            "clip_weight_3": "CLIP强度3"
+        },
+        "outputs": {
+            "LORA_STACK": "LoRa堆"
+        }
+    },
+    "CR Random Weight LoRA": {
+        "title": "随机权重LoRA",
+        "inputs": {
+            "lora_stack": "LoRA堆"
+        },
+        "widgets": {
+            "stride": "步幅",
+            "force_randomize_after_stride": "强制每次随机",
+            "lora_name": "LoRA名称",
+            "switch": "开关",
+            "weight_min": "最小强度",
+            "weight_max": "最大强度",
+            "clip_weight": "CLIP强度"
+        },
+        "outputs": {
+            "LORA_STACK": "LoRa堆"
+        }
+    },
     "CR Apply LoRA Stack": {
         "title": "应用LoRA堆",
         "inputs": {
@@ -246,8 +293,8 @@
     "CR Apply Multi-ControlNet": {
         "title": "应用ControlNet堆",
         "inputs": {
-            "base_positive": "正面提示词",
-            "base_negative": "负面提示词",
+            "base_positive": "正面条件",
+            "base_negative": "负面条件",
             "controlnet_stack": "ControlNet堆"
         },
         "widgets": {
@@ -256,8 +303,8 @@
                 "Off": "关闭"
         },
         "outputs": {
-            "base_pos": "正面提示词",
-            "base_neg": "负面提示词"
+            "base_pos": "正面条件",
+            "base_neg": "负面条件"
         }
     },
 
@@ -309,6 +356,27 @@
         "outputs": {
             "INT": "整数",
             "FLOAT": "浮点"
+        }
+    },
+    "CR Aspect Ratio Banners": {
+        "title": "宽高比(Banner)",
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "aspect_ratio": "宽高比",
+            "swap_dimensions": "切换宽高",
+            "upscale_factor": "放大系数",
+            "prescale_factor": "预放大系数",
+            "batch_size": "批次大小"
+        },
+        "outputs": {
+            "width": "宽度",
+            "height": "高度",
+            "upscale_factor": "放大系数",
+            "prescale_factor": "预放大系数",
+            "batch_size": "批次大小",
+            "empty_latent": "空Latent",
+            "show_help": "显示帮助"
         }
     },
     "CR SDXL Prompt Mixer": {
@@ -371,6 +439,42 @@
         },
         "outputs": {
             "INT": "整数"
+        }
+    },
+    "CR Clamp Value": {
+        "title": "钳制",
+        "widgets": {
+            "a": "A",
+            "range_min": "最小值",
+            "range_max": "最大值"
+        },
+        "outputs": {
+            "A": "A",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Set Value On Boolean": {
+        "title": "设置布尔值",
+        "widgets": {
+            "boolean_number": "布尔值",
+            "value_if_true": "如果真",
+            "value_if_false": "如果假"
+        },
+        "outputs": {
+            "INT": "整数",
+            "FLOAT": "浮点"
+        }
+    },
+    "CR Math Operation": {
+        "title": "数学操作",
+        "widgets": {
+            "a": "A",
+            "operation": "操作",
+            "decimal_places": "小数位"
+        },
+        "outputs": {
+            "a": "浮点",
+            "show_help": "显示帮助"
         }
     },
 
@@ -492,6 +596,30 @@
             "show_help": "显示帮助"
         }
     },
+    "CR Multiline Text": {
+        "title": "多行文本",
+        "widgets": {
+            "text": "文本",
+            "convert_from_csv": "使用CSV",
+            "csv_quote_char": "CSV引用符",
+            "remove_chars": "移除字段",
+            "chars_to_remove": "移除内容",
+            "split_string": "分离字符串"
+        },
+        "outputs": {
+            "multiline_text": "文本",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Save Text To File": {
+        "title": "保存文本到文件",
+        "widgets": {
+            "multiline_text": "多行文本",
+            "output_file_path": "输出路径",
+            "file_name": "文件名",
+            "file_extension": "后缀名"
+        }
+    },
     "CR Random Hex Color": {
         "title": "随机HEX色",
         "widgets": {
@@ -525,6 +653,80 @@
             "rgb_2": "RGB_2",
             "rgb_3": "RGB_3",
             "rgb_4": "RGB_4",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Random Multiline Values": {
+        "title": "随机多行值",
+        "widgets": {
+            "seed": "随机种",
+            "control_after_generate": "运行后操作",
+                "fixed": "固定",
+                "increment": "增加",
+                "decrement": "减少",
+                "randomize": "随机",
+            "value_type": "值类型",
+                "binary": "二进制",
+                "decimal": "十进制",
+                "hexadecimal": "十六进制",
+                "alphabetic": "字母",
+                "alphanumeric": "字母数字",
+            "rows": "行数",
+            "string_length": "字符串长度"
+        },
+        "outputs": {
+            "multiline_text": "多行文本",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Random Multiline Colors": {
+        "title": "随机多行颜色",
+        "widgets": {
+            "seed": "随机种",
+            "control_after_generate": "运行后操作",
+                "fixed": "固定",
+                "increment": "增加",
+                "decrement": "减少",
+                "randomize": "随机",
+            "value_type": "值类型",
+            "rows": "行数"
+        },
+        "outputs": {
+            "multiline_text": "多行文本",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Random RGB Gradient": {
+        "title": "随机RGB渐变",
+        "widgets": {
+            "seed": "随机种",
+            "control_after_generate": "运行后操作",
+                "fixed": "固定",
+                "increment": "增加",
+                "decrement": "减少",
+                "randomize": "随机",
+            "rows": "行数"
+        },
+        "outputs": {
+            "multiline_text": "多行文本",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Random Panel Codes": {
+        "title": "随机多通道编码",
+        "widgets": {
+            "seed": "随机种",
+            "control_after_generate": "运行后操作",
+                "fixed": "固定",
+                "increment": "增加",
+                "decrement": "减少",
+                "randomize": "随机",
+            "rows": "行数",
+            "string_length": "字符串长度",
+            "values": "值"
+        },
+        "outputs": {
+            "multiline_text": "多行文本",
             "show_help": "显示帮助"
         }
     },
@@ -720,6 +922,40 @@
         },
         "outputs": {
             "IMAGE": "图像"
+        }
+    },
+    "CR Simple Binary Pattern": {
+        "title": "二值图案(简易)",
+        "widgets": {
+            "binary_pattern": "二值图案",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Binary Pattern": {
+        "title": "二值图案",
+        "widgets": {
+            "binary_pattern": "二值图案",
+            "width": "宽度",
+            "height": "高度",
+            "background_color": "背景色",
+            "color_0": "颜色_0",
+            "color_1": "颜色_1",
+            "outline_thickness": "轮廓线厚度",
+            "outline_color": "轮廓线颜色",
+            "jitter_distance": "抖动距离",
+            "bg_color_hex": "背景色HEX",
+            "color0_hex": "颜色_0HEX",
+            "color1_hex": "颜色_1HEX",
+            "outline_color_hex": "轮廓线颜色HEX"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "show_help": "显示帮助"
         }
     },
     "CR Draw Text": {
@@ -975,8 +1211,8 @@
         "title": "模块节点束",
         "inputs": {
             "model": "模型",
-            "pos": "正面提示词",
-            "neg": "负面提示词",
+            "pos": "正面条件",
+            "neg": "负面条件",
             "latent": "Latent",
             "vae": "VAE",
             "clip": "CLIP",
@@ -1002,8 +1238,8 @@
         },
         "outputs": {
             "model": "模型",
-            "pos": "正面提示词",
-            "neg": "负面提示词",
+            "pos": "正面条件",
+            "neg": "负面条件",
             "latent": "Latent",
             "vae": "VAE",
             "clip": "CLIP",
@@ -1017,8 +1253,8 @@
         "inputs": {
             "pipe": "节点束",
             "model": "模型",
-            "pos": "正面提示词",
-            "neg": "负面提示词",
+            "pos": "正面条件",
+            "neg": "负面条件",
             "latent": "Latent",
             "vae": "VAE",
             "clip": "CLIP",
@@ -1164,8 +1400,8 @@
             "target_height": "目标高度"
         },
         "outputs": {
-            "base_positive": "正面提示词",
-            "base_negative": "负面提示词"
+            "base_positive": "正面条件",
+            "base_negative": "负面条件"
         }
     },
     
@@ -1443,6 +1679,27 @@
             "show_help": "显示帮助"
         }
     },
+    "CR Simple Banner": {
+        "title": "Banner(简易)",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "banner_text": "Banner文本",
+            "font_name": "字体",
+            "max_font_size": "最大字体大小",
+            "font_color": "字体颜色",
+            "outline_color": "轮廓线颜色",
+            "outline_thickness": "轮廓线厚度",
+            "margin_size": "页边距",
+            "font_color_hex": "字体颜色HEX",
+            "outline_color_hex": "轮廓线颜色HEX"
+        },
+        "outputs": {
+            "image": "图像",
+            "show_help": "显示帮助"
+        }
+    },
     "CR VAE Input Switch": {
         "title": "VAE切换",
         "inputs": {
@@ -1504,6 +1761,64 @@
             "show help": "显示帮助"
         }
     },
+    "CR Draw Shape": {
+        "title": "绘制形状",
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "shape": "形状",
+            "shape_color": "形状颜色",
+            "back_color": "背景颜色",
+            "x_offset": "X偏移",
+            "y_offset": "Y偏移",
+            "zoom": "缩放",
+            "rotation": "旋转",
+            "shape_color_hex": "形状颜色HEX",
+            "bg_color_hex": "背景色HEX"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Draw Pie": {
+        "title": "绘制圆",
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "pie_start": "起始角度",
+            "pie_stop": "最终角度",
+            "shape_color": "形状颜色",
+            "back_color": "背景颜色",
+            "x_offset": "X偏移",
+            "y_offset": "Y偏移",
+            "zoom": "缩放",
+            "rotation": "旋转",
+            "shape_color_hex": "形状颜色HEX",
+            "bg_color_hex": "背景色HEX"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Random Shape Pattern": {
+        "title": "随机形状图案",
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "num_rows": "行数",
+            "num_cols": "列数",
+            "color1": "颜色1",
+            "color2": "颜色2",
+            "color1_hex": "颜色_1HEX",
+            "color2_hex": "颜色_2HEX"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "show_help": "显示帮助"
+        }
+    },
     "CR Halftone Filter": {
         "title": "半调滤镜",
         "inputs": {
@@ -1524,6 +1839,25 @@
         },
         "outputs": {
             "image": "图像",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Vignette Filter": {
+        "title": "暗角滤镜",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "vignette_shape": "暗角形状",
+            "fether_amount": "羽化",
+            "x_offset": "X偏移",
+            "y_offset": "Y偏移",
+            "zoom": "缩放",
+            "reverse": "反转"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "MASK": "遮罩",
             "show_help": "显示帮助"
         }
     },
@@ -1599,6 +1933,25 @@
             "show_help": "显示帮助"
         }
     },
+    "CR Feathered Border": {
+        "title": "羽化边框",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "top_thickness": "顶厚度",
+            "bottom_thickness": "底厚度",
+            "left_thickness": "左厚度",
+            "right_thickness": "右厚度",
+            "border_color": "边框颜色",
+            "feather_amount": "羽化",
+            "border_color_hex": "边框颜色HEX"
+        },
+        "outputs": {
+            "image": "图像",
+            "show_help": "显示帮助"
+        }
+    },
     "CR Color Panel": {
         "title": "颜色面板",
         "widgets": {
@@ -1610,6 +1963,23 @@
         "outputs": {
             "image": "图像",
             "show_help": "显示帮助"
+        }
+    },
+    "CR Overlay Transparent Image": {
+        "title": "图像覆盖",
+        "inputs": {
+            "back_image": "背景图像",
+            "overlay_image": "覆盖图像"
+        },
+        "widgets": {
+            "transparency": "透明",
+            "offset_x": "偏移_X",
+            "offset_y": "偏移_Y",
+            "rotation_angle": "旋转角度",
+            "overlay_scale_factor": "缩放系数"
+        },
+        "outputs": {
+            "IMAGE": "图像"
         }
     },
     "CR Simple Text Panel": {
@@ -1656,6 +2026,39 @@
         },
         "outputs": {
             "image": "图像",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Simple Image Compare": {
+        "title": "图像对比(简易)",
+        "inputs": {
+            "image1": "图像1",
+            "image2": "图像2"
+        },
+        "widgets": {
+            "text1": "文本1",
+            "text2": "文本2",
+            "footer_height": "页尾高度",
+            "font_name": "字体",
+            "font_size": "字体大小",
+            "mode": "模式",
+            "border_thickness": "边框厚度"
+        },
+        "outputs": {
+            "image": "图像",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Thumbnail Preview": {
+        "title": "缩略图预览",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "rescale_factor": "缩放系数",
+            "max_columns": "最大列数"
+        },
+        "outputs": {
             "show_help": "显示帮助"
         }
     },
@@ -2122,6 +2525,19 @@
             "show_text": "显示文本"
         }
     },
+    "CR Font File List": {
+        "title": "字体文件列表",
+        "widgets": {
+            "source_folder": "文件夹",
+            "start_index": "起始编号",
+            "max_rows": "最大行数",
+            "folder_path": "路径"
+        },
+        "outputs": {
+            "LIST": "列表",
+            "show_help": "显示帮助"
+        }
+    },
     "CR Text List": {
         "title": "文本列表",
         "inputs": {
@@ -2158,6 +2574,98 @@
         },
         "outputs": {
             "TEXT_LIST_SIMPLE": "简易文本列表",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Load Image List": {
+        "title": "加载图像列表",
+        "widgets": {
+            "input_folder": "文件夹",
+            "start_index": "起始编号",
+            "max_images": "最大数量",
+            "input_path": "输入路径"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "CR Load Image List Plus": {
+        "title": "加载图像列表(高级)",
+        "widgets": {
+            "input_folder": "文件夹",
+            "start_index": "起始编号",
+            "max_images": "最大数量",
+            "input_path": "输入路径"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "MASK": "遮罩",
+            "index": "编号",
+            "filename": "文件名",
+            "width": "宽度",
+            "height": "高度",
+            "list_length": "列表长度",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Float Range List": {
+        "title": "浮点范围列表",
+        "widgets": {
+            "start": "起始值",
+            "end": "最终值",
+            "step": "步长",
+            "loops": "循环次数",
+            "ping_pong": "Ping-Pong"
+        },
+        "outputs": {
+            "FLOAT": "浮点",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Integer Range List": {
+        "title": "整数浮点范围",
+        "widgets": {
+            "start": "起始值",
+            "end": "最终值",
+            "step": "步长",
+            "loops": "循环次数",
+            "ping_pong": "Ping-Pong"
+        },
+        "outputs": {
+            "INT": "整数",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Load Text List": {
+        "title": "加载文本列表",
+        "widgets": {
+            "input_file_path": "文件路径",
+            "file_name": "文件名",
+            "file_extension": "后缀名"
+        },
+        "outputs": {
+            "STRING": "字符串",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Interwine Lists": {
+        "title": "列表列表",
+        "widgets": {
+            "list1": "列表1",
+            "list2": "列表2"
+        },
+        "outputs": {
+            "STRING": "字符串",
+            "show_help": "显示帮助"
+        }
+    },
+    "CR Binary To List": {
+        "title": "二进制到列表",
+        "widgets": {
+            "bit_string": "字符串"
+        },
+        "outputs": {
+            "STRING": "字符串",
             "show_help": "显示帮助"
         }
     },
@@ -2211,7 +2719,7 @@
 
 
 
-    "CR Cycle Moddel": {
+    "CR Cycle Models": {
         "title": "循环模型",
         "inputs": {
             "model": "模型",
