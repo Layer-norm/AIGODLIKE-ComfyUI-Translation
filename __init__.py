@@ -136,7 +136,7 @@ def register():
                 import _winapi
                 _winapi.CreateJunction(CUR_PATH.as_posix(), aigodlike_ext_path.as_posix())
             except WindowsError as e:
-                shutil.copytree(CUR_PATH.as_posix(), aigodlike_ext_path.as_posix(), ignore=shutil.ignore_patterns(".git"))
+                shutil.copytree(CUR_PATH.as_posix(), aigodlike_ext_path.as_posix(), ignore=shutil.ignore_patterns(".git", "example", "ja-JP", "ko-KR", "zh-CN", "__init__.py"))
         else:
             # 复制时过滤 .git
             shutil.copytree(CUR_PATH.as_posix(), aigodlike_ext_path.as_posix(), ignore=shutil.ignore_patterns(".git", "example", "ja-JP", "ko-KR", "zh-CN", "__init__.py"))
