@@ -328,7 +328,7 @@ export class TUtils {
 
 const ext = {
 	name: "AIGODLIKE.Translation",
-	init(app) {
+	async init(app) {
 		// Any initial setup to run as soon as the page loads
 		var presentLocale = localStorage.getItem(TUtils.LOCALE_ID);
 		if (!presentLocale) {
