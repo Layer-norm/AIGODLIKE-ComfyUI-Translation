@@ -408,6 +408,21 @@
             "CONDITIONING": "条件"
         }
     },
+    "InpaintModelConditioning": {
+        "title": "内补模型条件",
+        "inputs": {
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "vae": "VAE",
+            "pixels": "图像",
+            "mask": "遮罩"
+        },
+        "outputs": {
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "latent": "Latent"
+        }
+    },
     "SVD_img2vid_Conditioning": {
         "title": "SVD_图像到视频_条件",
         "inputs": {
@@ -430,7 +445,7 @@
         }
     },
     "StableZero123_Conditioning": {
-        "title": "SZ123_条件",
+        "title": "SZ123条件",
         "inputs": {
             "clip_vision": "CLIP视觉",
             "init_image": "图像",
@@ -442,6 +457,47 @@
             "batch_size": "批次大小",
             "elevation": "俯仰角",
             "azimuth": "方位角"
+        },
+        "outputs": {
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "latent": "Latent"
+        }
+    },
+    "StableZero123_Conditioning_Batched": {
+        "title": "SZ123条件(批次)",
+        "inputs": {
+            "clip_vision": "CLIP视觉",
+            "init_image": "图像",
+            "VAE": "VAE"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "batch_size": "批次大小",
+            "elevation": "俯仰角",
+            "azimuth": "方位角",
+            "elevation_batch_increment": "俯仰角增量",
+            "azimuth_batch_increment": "方位角增量"
+        },
+        "outputs": {
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "latent": "Latent"
+        }
+    },
+
+
+    "SD_4XUpscale_Conditioning": {
+        "title": "SD4X放大条件",
+        "inputs": {
+            "images": "图像",
+            "positive": "正面条件",
+            "negative": "负面条件"
+        },
+        "widgets": {
+            "scale_ratio": "缩放系数",
+            "noise_augmentation": "噪波增强"
         },
         "outputs": {
             "positive": "正面条件",
@@ -548,6 +604,18 @@
             "height": "高度",
             "x": "X",
             "y": "Y",
+            "strength": "强度"
+        },
+        "outputs": {
+            "CONDITIONING": "条件"
+        }
+    },
+    "ConditioningSetAreaStrength": {
+        "title": "条件采样区域强度",
+        "inputs": {
+            "conditioning": "条件"
+        },
+        "widgets": {
             "strength": "强度"
         },
         "outputs": {
@@ -787,6 +855,18 @@
             "Latent": "Latent"
         }
     },
+    "LatentBatchSeedBehavior": {
+        "title": "Latent批次随机种操作",
+        "inputs": {
+            "samples": "Latent"
+        },
+        "widgets": {
+            "seed_behavior": "随机种操作"
+        },
+        "outputs": {
+            "LATENT": "Latent"
+        }
+    },
 
 
     "VAEDecode": {
@@ -830,7 +910,7 @@
                 "nearest-exact": "邻近-精确",
                 "bilinear": "双线性插值",
                 "area": "区域",
-                "bislerp": "球面线性",
+                "bislerp": "双球面线性",
                 "bicubic": "双三次插值",
             "width": "宽度",
             "height": "高度",
@@ -852,7 +932,7 @@
                 "nearest-exact": "邻近-精确",
                 "bilinear": "双线性插值",
                 "area": "区域",
-                "bislerp": "球面线性",
+                "bislerp": "双球面线性",
                 "bicubic": "双三次插值",
             "scale_by": "系数"
         },
@@ -1378,8 +1458,26 @@
             "MASK": "遮罩"
         }
     },
-    
 
+
+    
+    "PhotoMakerLoader": {
+        "title": "PhotoMaker加载器",
+        "widgets": {
+            "photomaker_model_name": "PhotoMaker模型"
+        },
+        "outputs": {
+            "PHOTOMAKER": "PhotoMaker"
+        }
+    },
+    "PhotoMakerEncode": {
+        "title": "PhotoMaker编码",
+        "inputs": {
+            "photomaker": "PhotoMaker",
+            "image": "图像",
+            "clip": "CLIP"
+        }
+    },
 
 
     "VAEDecodeTiled": {
@@ -1500,7 +1598,7 @@
             "model": "模型"
         },
         "widgets": {
-            "block_number": "块编号",
+            "block_number": "层编号",
             "downscale_factor": "收缩系数",
             "start_percent": "开始时间",
             "end_percent": "结束时间",
@@ -1508,6 +1606,17 @@
         },
         "outputs": {
             "MODEL": "模型"
+        }
+    },
+    "ImageOnlyCheckpointSave": {
+        "title": "保存Checkpoint(仅图像)",
+        "inputs": {
+            "model": "模型",
+            "clip_vision": "CLIP视觉",
+            "vae": "VAE"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀"
         }
     },
     "SelfAttentionGuidance": {
@@ -1635,7 +1744,7 @@
         }
     },
     "CLIPTextEncodeSDXLRefiner": {
-        "title": "CLIP文本编码SDXL优化",
+        "title": "CLIP文本编码SDXL(Refiner)",
         "inputs": {
             "clip": "CLIP"
         },
@@ -1675,7 +1784,7 @@
         }
     },
     "CheckpointSave": {
-        "title": "保存模型",
+        "title": "保存Checkpoint",
         "inputs": {
             "model": "模型",
             "clip": "CLIP",

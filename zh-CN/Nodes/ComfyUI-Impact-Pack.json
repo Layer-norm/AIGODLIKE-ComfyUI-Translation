@@ -124,6 +124,15 @@
             "SEGS": "Seg"
         }
     },
+    "RemoveImageFromSEGS": {
+        "title": "Seg移除图像",
+        "inputs": {
+            "segs": "Seg"
+        },
+        "outputs": {
+            "SEGS": "Seg"
+        }
+    },
     "ImpactControlNetApplySEGS": {
         "title": "ControlNet应用Seg",
         "inputs": {
@@ -133,6 +142,15 @@
         },
         "widgets": {
             "strength": "强度"
+        },
+        "outputs": {
+            "SEGS": "Seg"
+        }
+    },
+    "ImpactControlNetClearSEGS": {
+        "title": "ControlNet移除Seg",
+        "inputs": {
+            "segs": "Seg"
         },
         "outputs": {
             "SEGS": "Seg"
@@ -1569,10 +1587,10 @@
             "vae": "VAE",
             "positive": "正面条件",
             "negative": "负面条件",
-            "refiner_model": "优化模型",
-            "refiner_clip": "优化CLIP",
-            "refiner_positive": "优化正面条件",
-            "refiner_negative": "优化负面条件",
+            "refiner_model": "模型(Refiner)",
+            "refiner_clip": "CLIP(Refiner)",
+            "refiner_positive": "正面条件(Refiner)",
+            "refiner_negative": "负面条件(Refiner)",
             "bbox_detector": "BBox检测",
             "sam_model_opt": "SAM模型",
             "segm_detector_opt": "Segm检测",
@@ -1638,10 +1656,10 @@
             "sam_model_opt": "SAM模型",
             "segm_detector_opt": "Segm检测",
             "detailer_hook": "细化约束",
-            "refiner_model": "优化模型",
-            "refiner_clip": "优化CLIP",
-            "refiner_positive": "优化正面条件",
-            "refiner_negative": "优化负面条件"
+            "refiner_model": "模型(Refiner)",
+            "refiner_clip": "CLIP(Refiner)",
+            "refiner_positive": "正面条件(Refiner)",
+            "refiner_negative": "负面条件(Refiner)"
         }
     },
     "EditDetailerPipe": {
@@ -1794,10 +1812,10 @@
             "segm_detector_opt": "Segm检测",
             "segm_detector": "Segm检测",
             "detailer_hook": "细化约束",
-            "refiner_model": "优化模型",
-            "refiner_clip": "优化CLIP",
-            "refiner_positive": "优化正面条件",
-            "refiner_negative": "优化负面条件"
+            "refiner_model": "模型(Refiner)",
+            "refiner_clip": "CLIP(Refiner)",
+            "refiner_positive": "正面条件(Refiner)",
+            "refiner_negative": "负面条件(Refiner)"
         },
         "widgets": {
             "wildcard": "通配符",

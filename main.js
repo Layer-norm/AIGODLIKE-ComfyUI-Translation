@@ -19,6 +19,9 @@ export class TUtils {
 		localStorage[TUtils.LOCALE_ID_LAST] = localStorage.getItem(TUtils.LOCALE_ID) || "en-US";//默认值与LOCALE_ID不同，确保转换功能正常
 		localStorage[TUtils.LOCALE_ID] = locale || "zh-CN";//相当于把defaultValue写在这里，后续操作不再额外判断
 		// TUtils.syncTranslation(); 					 //所有setLocale的部分都会刷新页面，刷新页面就会执行init(app)中的TUtils.syncTranslation()，不需要额外调用
+		setTimeout(()=>{
+			location.reload();
+		}, 500);
 	}
 
 	static syncTranslation(OnFinished = () => { }) {
@@ -59,20 +62,18 @@ export class TUtils {
 		});
 	}
 
-	static applyNodeTypeTranslation(app) {
-		// let nodeCT = this.T.NodeCategory;
+	static applyNodeTypeTranslationEx(nodeName) {
 		let nodesT = this.T.Nodes;
-		for (let nodeName in LiteGraph.registered_node_types) {
 			var nodeType = LiteGraph.registered_node_types[nodeName];
-			// for (let key in nodeCT) {
-			// 	if (!nodeType.category.includes(key))
-			// 		continue;
-			// 	nodeType.category = nodeType.category.replace(key, nodeCT[key]);
-			// }
 			let class_type = nodeType.comfyClass ? nodeType.comfyClass : nodeType.type;
 			if (nodesT.hasOwnProperty(class_type)) {
 				nodeType.title = nodesT[class_type]["title"] || nodeType.title;
 			}
+	}
+
+	static applyNodeTypeTranslation(app) {
+		for (let nodeName in LiteGraph.registered_node_types) {
+			this.applyNodeTypeTranslationEx(nodeName);
 		}
 	}
 
@@ -248,6 +249,20 @@ export class TUtils {
 		// LiteGraph.LGraphCanvas.prototype.showSearchBox.prototype = f3.prototype;
 	}
 
+	static addRegisterNodeDefCB(app) {
+		const f = app.registerNodeDef;
+		async function af() {
+			return f.apply(this, arguments);
+		}
+		app.registerNodeDef = async function (nodeId, nodeData) {
+			var res = af.apply(this, arguments);
+			res.then(() => {
+				TUtils.applyNodeTypeTranslationEx(nodeId);
+			});
+			return res;
+		};
+	}
+
 	static addSettingsMenuOptions(app) {
 		let id = this.LOCALE_ID;
 		app.ui.settings.addSetting({
@@ -303,7 +318,6 @@ export class TUtils {
 					return;
 				if (value != localStorage[id]) {
 					TUtils.setLocale(value);
-					location.reload();
 				}
 				// localStorage[id] = value; //前面条件一个return，一个刷新，这一行跑不上
 			},
@@ -378,6 +392,7 @@ const ext = {
 		TUtils.applyNodeTypeTranslation(app);
 		TUtils.applyContextMenuTranslation(app);
 		TUtils.applyMenuTranslation(app);
+		TUtils.addRegisterNodeDefCB(app);
 		TUtils.addSettingsMenuOptions(app);
 		// 构造设置面板
 		// this.settings = new AGLSettingsDialog();
@@ -393,8 +408,8 @@ const ext = {
 						localeLast = "en-US";
 					if (locale != localeLast) {
 						app.ui.settings.setSettingValue(TUtils.LOCALE_ID, localeLast);
-						TUtils.setLocale(localeLast);
-						location.reload();
+						// TUtils.setLocale(localeLast);
+						// location.reload();
 					}
 				},
 			}));
