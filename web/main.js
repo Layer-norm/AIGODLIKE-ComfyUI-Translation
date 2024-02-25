@@ -16,17 +16,19 @@ export class TUtils {
 	static ELS = {};
 
 	static setLocale(locale) {
-		localStorage[TUtils.LOCALE_ID_LAST] = localStorage.getItem(TUtils.LOCALE_ID) || "en-US";
-		localStorage[TUtils.LOCALE_ID] = locale;
-		// TUtils.syncTranslation();
+		localStorage[TUtils.LOCALE_ID_LAST] = localStorage.getItem(TUtils.LOCALE_ID) || "en-US";//默认值与LOCALE_ID不同，确保转换功能正常
+		localStorage[TUtils.LOCALE_ID] = locale || "zh-CN";//相当于把defaultValue写在这里，后续操作不再额外判断
+		// TUtils.syncTranslation(); 					 //所有setLocale的部分都会刷新页面，刷新页面就会执行init(app)中的TUtils.syncTranslation()，不需要额外调用
 		setTimeout(()=>{
 			location.reload();
 		}, 500);
 	}
 
 	static syncTranslation(OnFinished = () => { }) {
-		var locale = localStorage.getItem(TUtils.LOCALE_ID) || "en-US";
+
+		var locale = localStorage.getItem(TUtils.LOCALE_ID);//删掉了zh-CN, 因为之前setLocale已经设置好了
 		var url = "./agl/get_translation";
+
 		var request = new XMLHttpRequest();
 		request.open("post", url);
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -59,13 +61,14 @@ export class TUtils {
 			TUtils.syncTranslation(() => { resolve(1); });
 		});
 	}
+
 	static applyNodeTypeTranslationEx(nodeName) {
 		let nodesT = this.T.Nodes;
-		var nodeType = LiteGraph.registered_node_types[nodeName];
-		let class_type = nodeType.comfyClass ? nodeType.comfyClass : nodeType.type;
-		if (nodesT.hasOwnProperty(class_type)) {
-			nodeType.title = nodesT[class_type]["title"] || nodeType.title;
-		}
+			var nodeType = LiteGraph.registered_node_types[nodeName];
+			let class_type = nodeType.comfyClass ? nodeType.comfyClass : nodeType.type;
+			if (nodesT.hasOwnProperty(class_type)) {
+				nodeType.title = nodesT[class_type]["title"] || nodeType.title;
+			}
 	}
 
 	static applyNodeTypeTranslation(app) {
@@ -308,14 +311,15 @@ export class TUtils {
 						})]),
 				])
 			},
-			defaultValue: localStorage[id] || "en-US",
+			// defaultValue: "en-US",
+			defaultValue: localStorage[id],//不在此处设置特定初值
 			async onChange(value) {
 				if (!value)
 					return;
-				if (localStorage[id] != undefined && value != localStorage[id]) {
+				if (value != localStorage[id]) {
 					TUtils.setLocale(value);
 				}
-				localStorage[id] = value;
+				// localStorage[id] = value; //前面条件一个return，一个刷新，这一行跑不上
 			},
 		});
 	}
@@ -326,7 +330,14 @@ const ext = {
 	name: "AIGODLIKE.Translation",
 	async init(app) {
 		// Any initial setup to run as soon as the page loads
+		var presentLocale = localStorage.getItem(TUtils.LOCALE_ID);
+		if (!presentLocale) {
+			TUtils.setLocale();
+			// presentLocale = localStorage.getItem(TUtils.LOCALE_ID);
+		}
+		// alert("当前语言是："+presentLocale);
 		TUtils.syncTranslation();
+		// TUtils.asyncTranslation();//防止节点树加载过慢未能及时翻译
 		return;
 
 		var f = app.graphToPrompt;
@@ -391,12 +402,14 @@ const ext = {
 				id: "swlocale-button",
 				textContent: TUtils.T.Menu["Switch Locale"] || "Switch Locale",
 				onclick: () => {
-					var localeLast = localStorage.getItem(TUtils.LOCALE_ID_LAST) || "en-US";
-					var locale = localStorage.getItem(TUtils.LOCALE_ID) || "en-US";
+					var localeLast = localStorage.getItem(TUtils.LOCALE_ID_LAST);//前面进行过判断，载入页面时已经确保有值
+					var locale = localStorage.getItem(TUtils.LOCALE_ID);//同上
 					if (locale != "en-US" && localeLast != "en-US")
 						localeLast = "en-US";
 					if (locale != localeLast) {
 						app.ui.settings.setSettingValue(TUtils.LOCALE_ID, localeLast);
+						// TUtils.setLocale(localeLast);
+						// location.reload();
 					}
 				},
 			}));
